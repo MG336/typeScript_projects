@@ -8,4 +8,4 @@ let numberOrString: (number | string)[] = [1, 2, 3,'a','b','c'];
 console.log(userName, age, id, number, numberOrString);
 
 
-
+export {userName, age, id, number, numberOrString}

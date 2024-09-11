@@ -5,5 +5,6 @@ interface User {
 }
 
 let user: User = {name:"John", age: 30};
-
 console.log(user);
+
+export {user};

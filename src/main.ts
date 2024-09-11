@@ -1,8 +1,7 @@
 import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
-import './projects/typing_of_variables.ts'
+import * as variables from './projects/typing_of_variables.ts';
 import './projects/interface.ts'
 import './projects/functions_with_types.ts'
 import './projects/use_union_type.ts'
@@ -28,9 +27,18 @@ import './projects/use_union_type.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-  <h1>1234</h1>
-  </div>
-`
+  <h1>TypeScript Project</h1>
+    <section>
+      <h2>Typing of variables</h2>
+      <p>${variables.userName}</p>
+      <p>${variables.number}</p>
+      <p>${variables.id}</p>
+    </section>
+  
+  `
+
+
+    
 
 
 // setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)

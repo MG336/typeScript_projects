@@ -1,4 +1,4 @@
-async function fetchData(url: string): Promise<void>{
+export default async function fetchData(url: string): Promise<void>{
     try{
         let response = await fetch(url);
         let data = await response.json();

@@ -1,5 +1,5 @@
 
-function processInput(input: {name: string, age: number} | string): void {
+export default function processInput(input: {name: string, age: number} | string): void {
     if(typeof input === 'string'){
         console.log(input.toUpperCase());
     }else{

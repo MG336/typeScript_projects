@@ -1,4 +1,4 @@
-function processId(id: string | number): void{
+export default function processId(id: string | number): void{
     if (typeof id === 'string') {
         console.log(id.toUpperCase());
     } else {
@@ -8,3 +8,4 @@ function processId(id: string | number): void{
 
 processId(5);
 processId('abc');
+
