@@ -1,4 +1,4 @@
-import getAdultUsers from '../src/projects/arrays_with_interfaces';
+import getAdultUsers from '../../src/projects/junior/arrays_with_interfaces';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('getAdultUsers', () => {

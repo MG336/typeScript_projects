@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import showProductInfo from '../src/projects/tuples';
+import showProductInfo from '../../src/projects/junior/tuples';
 
 describe('showProductInfo function', () => {
     it('should log the correct product information', ()=> {

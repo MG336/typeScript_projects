@@ -1,4 +1,4 @@
-import { ApiService } from '../src/projects/rest_api_interface';
+import { ApiService } from '../../src/projects/middle/rest_api';
 import { describe, it, expect,vi } from 'vitest';
 
 interface Post {

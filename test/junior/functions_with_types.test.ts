@@ -1,4 +1,4 @@
-import add from '../src/projects/functions_with_types';
+import add from '../../src/projects/junior/functions_with_types';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('function add',()=>{

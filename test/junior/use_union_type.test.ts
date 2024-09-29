@@ -1,4 +1,4 @@
-import processId from '../src/projects/use_union_type';
+import processId from '../../src/projects/junior/use_union_type';
 import { describe, it, expect, vi } from "vitest";
 
 

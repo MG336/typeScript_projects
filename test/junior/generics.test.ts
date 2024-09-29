@@ -1,4 +1,4 @@
-import identity from '../src/projects/generics';
+import identity from '../../src/projects/junior/generics';
 import { describe, it, expect, vi } from 'vitest';
 
 

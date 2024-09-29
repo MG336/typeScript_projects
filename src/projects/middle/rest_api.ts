@@ -1,31 +1,3 @@
-// Создайте класс ApiService, который будет взаимодействовать с REST API (например, с публичным API, таким как JSONPlaceholder). Этот класс должен поддерживать основные операции: получение, создание, обновление и удаление данных.
-
-// Требования:
-// Создание интерфейса:
-// Создайте интерфейс Post, который будет содержать свойства:
-// id: number
-// title: string
-// body: string
-// userId: number
-// Класс ApiService:
-// Реализуйте класс ApiService с методом:
-// getPosts(): Promise<Post[]> — получает список постов из API.
-// getPost(id: number): Promise<Post> — получает пост по ID.
-// createPost(post: Post): Promise<Post> — создает новый пост.
-// updatePost(post: Post): Promise<Post> — обновляет существующий пост.
-// deletePost(id: number): Promise<void> — удаляет пост по ID.
-
-// Обработка ошибок:
-// Реализуйте базовую обработку ошибок для каждого метода, выбрасывая ошибки с подробным описанием, если возникла проблема с запросом.
-// Тестирование:
-// Напишите простые тесты для методов класса ApiService с использованием библиотеки для тестирования, например, Jest. Проверьте успешные и неуспешные случаи для каждого метода.
-// Дополнительно (опционально):
-// Реализуйте кэширование результатов. Например, если метод getPosts() был вызван, то при последующих вызовах в течение некоторого времени возвращайте закэшированные данные.
-// Используйте TypeScript для определения типов для всех переменных и параметров.
-// Ожидаемый результат:
-// На выходе вы должны получить полностью работающий класс ApiService, который обеспечит взаимодействие с REST API, а также тесты, демонстрирующие корректную работу каждого метода.
-
-
 interface Post {
     id: number,
     title: string,
@@ -146,11 +118,11 @@ const createPost = await connect.createPost(`https://jsonplaceholder.typicode.co
 const updatePost = await connect.updatePost(`https://jsonplaceholder.typicode.com/posts`, 1, testPost);
 const deletePost = await connect.deletePost(`https://jsonplaceholder.typicode.com/posts`, 2);
 
-// console.log(posts?.slice(0,3));
+console.log(posts?.slice(0,3));
 console.log(post);
-// console.log(createPost);
-// console.log(updatePost);
-// console.log(deletePost);
+console.log(createPost);
+console.log(updatePost);
+console.log(deletePost);
 
 
 export { 
