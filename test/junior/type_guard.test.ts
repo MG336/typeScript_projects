@@ -1,4 +1,4 @@
-import processInput from '../src/projects/type_guard';
+import processInput from '../../src/projects/junior/type_guard';
 import { describe, it, expect, vi } from "vitest";
 
 describe('processInput function', ()=> {

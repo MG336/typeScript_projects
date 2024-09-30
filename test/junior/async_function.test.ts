@@ -1,4 +1,4 @@
-import fetchData from '../src/projects/async_function';
+import fetchData from '../../src/projects/junior/async_function';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('fetchData function', () => {

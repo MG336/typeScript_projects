@@ -1,11 +1,14 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import * as variables from './projects/typing_of_variables.ts';
-import './projects/interface.ts';
-import './projects/functions_with_types.ts';
-import './projects/use_union_type.ts';
-import './projects/rest_api_interface.ts';
+// import './style.css'
+// import typescriptLogo from './typescript.svg'
+// import viteLogo from '/vite.svg'
+// import * as variables from './projects/typing_of_variables.ts';
+// import './projects/interface.ts';
+// import './projects/functions_with_types.ts';
+// import './projects/use_union_type.ts';
+// import './projects/rest_api_interface.ts';
+// import './projects/middle/note_manager.ts';
+import './projects/middle/library_control_systems';
+
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 //   <div>
@@ -26,17 +29,17 @@ import './projects/rest_api_interface.ts';
 // `
 
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-  <h1>TypeScript Project</h1>
-    <section>
-      <h2>Typing of variables</h2>
-      <p>${variables.userName}</p>
-      <p>${variables.number}</p>
-      <p>${variables.id}</p>
-    </section>
+// document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+//   <div>
+//   <h1>TypeScript Project</h1>
+//     <section>
+//       <h2>Typing of variables</h2>
+//       <p>${variables.userName}</p>
+//       <p>${variables.number}</p>
+//       <p>${variables.id}</p>
+//     </section>
   
-  `
+//   `
 
 
     

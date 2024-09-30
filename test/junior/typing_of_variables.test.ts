@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import * as variables from '../src/projects/typing_of_variables';
+import * as variables from '../../src/projects/junior/typing_of_variables';
 
 describe('Testing exported variables', ()=> {
     it('should have the correct userName', ()=> {

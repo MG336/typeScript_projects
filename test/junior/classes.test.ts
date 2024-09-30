@@ -1,4 +1,4 @@
-import { Animal, Dog } from '../src/projects/classes';
+import { Animal, Dog } from '../../src/projects/junior/classes';
 import { describe, it, expect, vi } from 'vitest';
 
 describe('Animal and Dog classes', () => {

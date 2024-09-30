@@ -1,4 +1,4 @@
-import {user} from '../src/projects/interface';
+import {user} from '../../src/projects/junior/interface';
 import { describe, it, expect } from 'vitest';
 
 describe('User object', () => {
