@@ -46,7 +46,7 @@ describe('Library', ()=>{
             expect(library.findItemByTitle('book1')).toEqual(book1);
         })
         it('should throw an error when object not found', ()=>{
-            expect(() => library.findItemByTitle('book1').toThrowError());
+            expect(() => library.findItemByTitle('book123').toThrowError());
         })
     })
 })
