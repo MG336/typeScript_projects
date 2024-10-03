@@ -95,7 +95,7 @@ class ProjectManager {
     constructor(
     ){}
     
-    private projects: Project[] = [];
+    public projects: Project[] = [];
 
     createProject(name: string, description: string, projectId: string): Project {
         const newProject = new Project(name, description, projectId);
@@ -193,3 +193,6 @@ admin1.addUserToProject('1', user3);
 admin1.removeUserFromProject('1','2');
 
 console.log(project1)
+
+
+export {ProjectManager, Admin, Task, Project, User}
