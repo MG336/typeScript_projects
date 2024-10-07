@@ -8,7 +8,8 @@
 // import './projects/rest_api_interface.ts';
 // import './projects/middle/note_manager.ts';
 // import './projects/middle/library_control_systems';
-    import './projects/middle/project_management';
+    // import './projects/middle/project_management';
+import './projects/middle/stock_footage_store';    
 
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `

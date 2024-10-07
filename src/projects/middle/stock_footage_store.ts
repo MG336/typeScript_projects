@@ -50,7 +50,7 @@ class User{
     constructor(
         public username:string,
         public userId:string,
-        public purchasedMedia:Media[]
+        public purchasedMedia:Media[] = []
     ){}
 
     displayInfo():void{
@@ -73,28 +73,34 @@ class User{
 
 class Store {
     constructor(
-        public users: User[],
-        public media: Media[]
+        public users: User[] = [],
+        public media: Media[] = []
     ){}
     
     addMedia(media: Media):void{
+        if(this.media.find(item=>item.mediaId === media.mediaId)){
+            throw new Error('media already exists111');
+        }
         this.media.push(media);
     }
 
-    registerUser(user: User):void{
+    addUser(user: User) :void{
+        if(this.users.find(user=>user.userId === user.userId)){
+            throw new Error('user already exists');
+        }
         this.users.push(user);
     }
 
-    purchaseMedia(userId: string, mediaId: string):void{
-        const user = this.users.find(user => user.userId === userId);
-        const media = this.media.find(media => media.mediaId === mediaId);
 
-        if(!media){
-            throw  new Error('Media not found');
-        }
+    purchaseMedia(userId: string, mediaId: string) :void{
+        const user = this.users.find(user => user.userId === userId);
+        // const media = this.media.find(media => media.mediaId === mediaId);
+        const media = this.checkMedeiaAvailable(mediaId);
+
         if(!user){
             throw new Error('User not found');
         }
+
         if(user.purchasedMedia.includes(media)){
             throw new Error('Media already purchased');
         }
@@ -102,9 +108,46 @@ class Store {
         user?.purchasedMedia.push(media);
     }
 
+    checkMedeiaAvailable(mediaId: string) :Media {
+        const media = this.media.find(media => media.mediaId === mediaId);
+        if(!media){
+            throw  new Error('Media not found');
+        
+        }else if(!media.isAvailable){
+            throw new Error('Media is not available');
+        
+        }else{
+            return media
+        }
+    }   
+
     viewAvailableMedia():Media[]{
         const availableMedia = this.media.filter(media => media.isAvailable);
         return availableMedia;
     }
 
+    viewUsers() :User[]{
+        return this.users
+    }
 }
+
+
+const video1 = new Video('video1', 'video', 10, true, '1920x1080', '1', 24, 60);
+const image1 = new Image('img1', 'image', 5, true, '1920x1080', '2');
+
+const user1 = new User('user','1');
+
+
+const store = new Store();
+store.addMedia(video1);
+store.addMedia(image1);
+store.addUser(user1);
+store.purchaseMedia('1','1');
+store.purchaseMedia('1','2');
+const availableMedia = store.viewAvailableMedia();
+const users = store.viewUsers();
+
+
+debugger
+
+

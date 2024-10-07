@@ -85,7 +85,6 @@ describe('ProjectManager',()=>{
             
             expect(listTasks.length).toBe(2);
             expect(listTasks).toEqual(expect.arrayContaining([task1,task2]));
-
         })
     })
 })
