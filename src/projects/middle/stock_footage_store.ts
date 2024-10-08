@@ -1,13 +1,5 @@
-// Классы:
-// Media: базовый класс, представляющий мультимедийный контент (футажи). Содержит свойства title (название), duration (длительность в секундах для видео, для изображений - 0), type (строка, указывающая тип контента: "image" или "video"), price (цена) и isAvailable (доступность).
-// Image: наследник класса Media, для представления изображений с дополнительным свойством resolution (разрешение изображения).
-// Video: наследник класса Media, для представления видео с дополнительным свойством resolution (разрешение видео) и frameRate (частота кадров).
-// User: класс, представляющий пользователя магазина, содержит свойства username (имя пользователя), userId (идентификатор пользователя) и метод displayInfo() для вывода информации о пользователе.
-// Store: класс, представляющий магазин, должен включать методы для:
-// Добавления мультимедийного контента (addMedia(media: Media): void)
-// Регистрации пользователей (registerUser(user: User): void)
-// Покупки контента (purchaseMedia(userId: string, mediaTitle: string): void)
-// Просмотра доступного контента (viewAvailableMedia(): Media[])
+// You need to develop a stock footage store management system that will allow you to add videos and images, 
+// register users, and manage the process of buying and downloading content.
 
 class Media{
     constructor(
@@ -59,18 +51,6 @@ class User{
 }
 
 
-// Store: класс, представляющий магазин, должен включать методы для:
-// Добавления мультимедийного контента (addMedia(media: Media): void)
-// Регистрации пользователей (registerUser(user: User): void)
-// Покупки контента (purchaseMedia(userId: string, mediaTitle: string): void)
-// Просмотра доступного контента (viewAvailableMedia(): Media[])
-
-// Методы:
-// В классе Media должен быть метод displayInfo(), который выводит информацию о мультимедийном контенте (тип, название, длительность, цена, доступность).
-// В классе Store должен быть метод для проверки доступности контента перед покупкой и обновления статуса доступности после покупки.
-// Пример использования
-
-
 class Store {
     constructor(
         public users: User[] = [],
@@ -79,8 +59,8 @@ class Store {
     
     addMedia(media: Media):void{
         if(this.media.find(item=>item.mediaId === media.mediaId)){
-            throw new Error('media already exists111');
-        }
+            throw new Error('media already exists');
+        }   
         this.media.push(media);
     }
 
@@ -94,8 +74,7 @@ class Store {
 
     purchaseMedia(userId: string, mediaId: string) :void{
         const user = this.users.find(user => user.userId === userId);
-        // const media = this.media.find(media => media.mediaId === mediaId);
-        const media = this.checkMedeiaAvailable(mediaId);
+        const media = this.checkMediaAvailable(mediaId);
 
         if(!user){
             throw new Error('User not found');
@@ -108,7 +87,7 @@ class Store {
         user?.purchasedMedia.push(media);
     }
 
-    checkMedeiaAvailable(mediaId: string) :Media {
+    checkMediaAvailable(mediaId: string) :Media {
         const media = this.media.find(media => media.mediaId === mediaId);
         if(!media){
             throw  new Error('Media not found');
@@ -147,7 +126,8 @@ store.purchaseMedia('1','2');
 const availableMedia = store.viewAvailableMedia();
 const users = store.viewUsers();
 
+export {Store, User, Image, Video}
 
-debugger
+// debugger
 
 
