@@ -87,11 +87,11 @@ class Library {
     private items: Item[] = [];
 
     addItem(item: Item): boolean {
-        
-        if(!item){
-            
+
+        if (!item) {
+
             throw new Error("Item is null");
-        }else{
+        } else {
             this.items.push(item);
             return true;
         }
@@ -105,7 +105,7 @@ class Library {
         const item = this.items.find(item => item.title === title);
         if (!item) {
             throw new Error("Item not found");
-        } 
+        }
         return item;
     }
 }
@@ -125,4 +125,4 @@ console.log(library.findItemByTitle('book1'));
 console.log(book1.toString())
 
 
-export {Library, Magazine, Book, Item};
+export { Library, Magazine, Book, Item };

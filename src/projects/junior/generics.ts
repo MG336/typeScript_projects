@@ -7,7 +7,7 @@ export default function identity<T>(arg: T): T {
 
 const number = [1, 2, 3, 4, 5];
 
-function findElement<T>(arg:T, array:T[]): number{
+function findElement<T>(arg: T, array: T[]): number {
     return array.findIndex(element => element === arg)
 }
 
@@ -15,10 +15,10 @@ const index = findElement(2, number);
 
 //-------------
 
-class Stack<T>{
-    private items:T[] = [];
+class Stack<T> {
+    private items: T[] = [];
 
-    push(element:T) {
+    push(element: T) {
         this.items.push(element);
     }
 
@@ -37,30 +37,30 @@ const topItem = stack.peek();
 
 //-------------
 
-    interface Response <T, U>{
-        data:T;
-        error: U;
-    }
+interface Response<T, U> {
+    data: T;
+    error: U;
+}
 
-    const response: Response<{name: string}, null> = {
-        data: {name:'Alice'},
-        error: null
-    }
+const response: Response<{ name: string }, null> = {
+    data: { name: 'Alice' },
+    error: null
+}
 
-    function handleResponse<T, U>(response: Response<T, U>): void {
-        if(response.error){
-            console.error('Error:', response.error);
-        }else{
-            console.log('Data:', response.data);
-        }
+function handleResponse<T, U>(response: Response<T, U>): void {
+    if (response.error) {
+        console.error('Error:', response.error);
+    } else {
+        console.log('Data:', response.data);
     }
-    handleResponse(response);
+}
+handleResponse(response);
 
 //-------------
 
 
-function merge<T extends object, U extends object>(obj1: T, obj2: U): T & U{
-    return {...obj1, ...obj2};
+function merge<T extends object, U extends object>(obj1: T, obj2: U): T & U {
+    return { ...obj1, ...obj2 };
 }
 
 const obj1 = { x: 1, y: 2 };

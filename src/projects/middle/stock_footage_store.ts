@@ -1,4 +1,4 @@
-// You need to develop a stock footage store management system that will allow you to add videos and images, 
+// Stock footage store management system that will allow you to add videos and images, 
 // register users, and manage the process of buying and downloading content.
 
 class Media{
