@@ -8,6 +8,7 @@ class Vehicle {
         public model: string,
         public year: number,
         public licensePlate: number,
+        public available: boolean = true
     ){}
 
     displayInfo():{make: string, model: string, year: number; licensePlate: number}{
@@ -24,7 +25,8 @@ class Driver {
     constructor(
         public name: string,
         public licenseNumber: number,
-        public drivingExperience: number
+        public drivingExperience: number,
+        public available: boolean = true
     ){}
     displayInfo():{name:string, licenseNumber: number, drivingExperience: number}{
         return {
@@ -42,7 +44,8 @@ class Trip {
         public startLocation: string,
         public endLocation: string,
         public distance: number,
-        public duration: number
+        public duration: number,
+        public tripId:number
     ){}
     addVehicle(vehicle: Vehicle): void{
         this.vehicle = vehicle
@@ -54,13 +57,15 @@ class Trip {
 }
 
 class FleetManager{
-    public trips: Trip[] = [];
-    public drivers: Driver[] = [];
-    // public vehicles: Vehicle[] = [];
+
     public vehicles: Map<number, Vehicle>;
+    public drivers: Map<number, Driver>;
+    public trips: Map<number, Trip>;
 
     constructor(){
         this.vehicles = new Map<number, Vehicle>
+        this.drivers = new Map<number, Driver>
+        this.trips = new Map<number, Trip>
     }
 
 
@@ -70,13 +75,14 @@ class FleetManager{
     //     }
     //     this.vehicles.push(vehicle);
     // }
+
+    //Vehicles ----------------------------
     addVehicle(vehicle: Vehicle) :void{
         if(this.vehicles.has(vehicle.licensePlate)){
-            throw new Error('Vehicle with license plate ${vehicle.licensePlate} already exists.');
+            throw new Error(`Vehicle with license plate ${vehicle.licensePlate} already exists.`);
         }
         this.vehicles.set(vehicle.licensePlate, vehicle);
     }
-
     removeVehicle(licensePlate: number): boolean{
         return this.vehicles.delete(licensePlate)
     }
@@ -85,13 +91,77 @@ class FleetManager{
         return this.vehicles.get(licensePlate);
     }
 
-    
 
-    registerDriver(driver: Driver):void{
-        if(this.drivers.find(driver => driver.licenseNumber === driver.licenseNumber)){
-            throw new Error('A driver with this name already exists')
+
+
+    //Drivers -------------------------------
+    addDriver(driver: Driver): void{
+        if(this.drivers.has(driver.licenseNumber)){
+            throw new Error(`Driver with license Number ${driver.licenseNumber} already exists.`);
         }
-        this.drivers.push(driver);
+        
+        this.drivers.set(driver.licenseNumber, driver);
+    }
+    removeDriver(licenseNumber: number): boolean {
+        return this.drivers.delete(licenseNumber)
     }
 
+    getDriver(licenseNumber: number): Driver | undefined {
+        return this.drivers.get(licenseNumber)
+    }
+
+
+    //Trips ----------------------------
+    addTrip(
+        vehicleLicensePlate: number,
+        driverLicenseNumber: number,
+        startLocation: string,
+        endLocation: string,
+        distance: number,
+        duration: number,
+    ){
+        const driver = this.getDriver(driverLicenseNumber);
+        if(!driver || !driver.available){
+            throw new Error(`Driver with license Number ${driverLicenseNumber} not available.`);
+        }
+        
+        const vehicle = this.getVehicle(vehicleLicensePlate);
+        if(!vehicle || !vehicle.available){
+            throw new Error(`Vehicle with License Plate ${vehicleLicensePlate} not available.`);
+        }
+
+        driver.available = false;
+        vehicle.available = false;
+
+        const tripId = Date.now();
+        const trip = new Trip(vehicle,driver,startLocation,endLocation,distance,duration,tripId);
+        this.trips.set(tripId, trip);
+
+    }
+    
+    removeTrip(tripId: number): boolean{
+        return this.trips.delete(tripId);
+    }
+
+    getTrip(tripId: number): Trip | undefined {
+        return this.trips.get(tripId);
+    }
+
+    getTrips(): Trip[]{
+        const trips = Array.from(this.trips.values())
+        return trips
+    }
+    
 }
+
+const driver1 = new Driver('driver1', 1, 2,);
+const vehicle1 = new Vehicle('vehicle1', 'm1', 2024, 1);
+const fleetManager = new FleetManager();
+
+fleetManager.addDriver(driver1);
+fleetManager.addVehicle(vehicle1);
+fleetManager.addTrip(1,1,'a','b',40,1);
+
+
+
+
