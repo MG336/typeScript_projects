@@ -68,14 +68,6 @@ class FleetManager{
         this.trips = new Map<number, Trip>
     }
 
-
-    // addVehicle(vehicle: Vehicle) :void{
-    //     if(this.vehicles.find(vehicle => vehicle.licensePlate === vehicle.licensePlate)){
-    //         throw new Error('A vehicle with this licensePlate already exists')
-    //     }
-    //     this.vehicles.push(vehicle);
-    // }
-
     //Vehicles ----------------------------
     addVehicle(vehicle: Vehicle) :void{
         if(this.vehicles.has(vehicle.licensePlate)){
@@ -119,6 +111,7 @@ class FleetManager{
         endLocation: string,
         distance: number,
         duration: number,
+        tripId: number = Date.now()
     ){
         const driver = this.getDriver(driverLicenseNumber);
         if(!driver || !driver.available){
@@ -133,7 +126,6 @@ class FleetManager{
         driver.available = false;
         vehicle.available = false;
 
-        const tripId = Date.now();
         const trip = new Trip(vehicle,driver,startLocation,endLocation,distance,duration,tripId);
         this.trips.set(tripId, trip);
 
@@ -161,6 +153,8 @@ const fleetManager = new FleetManager();
 fleetManager.addDriver(driver1);
 fleetManager.addVehicle(vehicle1);
 fleetManager.addTrip(1,1,'a','b',40,1);
+
+export {Driver, Vehicle, Trip, FleetManager}
 
 
 
