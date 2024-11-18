@@ -21,8 +21,6 @@ interface userData {
 }
 
 class ApiClient {
-
-
     constructor(
         private baseUrl: string
     ) { }
@@ -46,8 +44,6 @@ class ApiClient {
     }
 }
 
-
-
 class ApiFacade {
     private apiClient: ApiClient;
 
@@ -70,5 +66,9 @@ class ApiFacade {
 }
 
 export { ApiFacade }
+
+
+
+
 
 
