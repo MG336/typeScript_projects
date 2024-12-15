@@ -83,3 +83,4 @@ notificationCenter.subscribe(user3);
 
 notificationCenter.notify('update');
 
+export{ NotificationCenter, User };
