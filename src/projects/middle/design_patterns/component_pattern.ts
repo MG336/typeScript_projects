@@ -19,13 +19,14 @@ interface Component {
 
 
 class Button implements Component{
-
+    private element: HTMLElement;
     constructor(
         private label: string = 'text',
-        private element: HTMLElement = document.createElement('button'),
-        private id:string = 'button'
+        private id:string = 'button1'
 
-    ){}
+    ){
+        this.element = document.createElement('button');
+    }
 
     public onClick(event:Function):void {
         const element = this.element;
@@ -91,10 +92,8 @@ class Card implements Component{
     }
 }
 
-        
-
     
-const button = new Button();
+const button = new Button('id');
 
 button.setProps({
     color: 'red',
@@ -117,19 +116,5 @@ card.setProps({
 
 card.render('app');
 
-
+export {Button, Card}
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
