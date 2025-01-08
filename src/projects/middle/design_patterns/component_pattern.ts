@@ -56,8 +56,8 @@ class Button implements Component{
 }
 
 class Card implements Component{
+    private element: HTMLElement = document.createElement('div');
     constructor(
-        private element: HTMLElement = document.createElement('div'),
         private id:string = 'card1'
     ){}
 
