@@ -1,10 +1,12 @@
-interface iProps{
-    color?:string;
-    backgroundColor?:string;
+// Create a button component and a card component using the component design pattern
+
+interface iProps {
+    color?: string;
+    backgroundColor?: string;
 }
 
-interface iCardProps extends iProps{
-    
+interface iCardProps extends iProps {
+
     titleText: string,
     subTitleText: string,
 
@@ -13,34 +15,34 @@ interface iCardProps extends iProps{
 }
 
 interface Component {
-    render(container:string):void
+    render(container: string): void
     setProps(props: iProps): void
 }
 
 
-class Button implements Component{
-    private element: HTMLElement;
+class Button implements Component {
+    private element: HTMLElement = document.createElement('button');
     constructor(
         private label: string = 'text',
-        private id:string = 'button1'
+        private id: string = 'button1'
 
-    ){
-        this.element = document.createElement('button');
+    ) {
+        // this.element = document.createElement('button');
     }
 
-    public onClick(event:Function):void {
+    public onClick(event: Function): void {
         const element = this.element;
-        element.addEventListener('click', ()=>{
+        element.addEventListener('click', () => {
             event();
         })
     }
 
-    public render(container:string){
+    public render(container: string) {
         const containerElem = document.getElementById(container);
-        
-        if(containerElem){
+
+        if (containerElem) {
             containerElem.appendChild(this.element);
-        }else{
+        } else {
             console.error('container not found');
         }
     }
@@ -55,11 +57,11 @@ class Button implements Component{
     }
 }
 
-class Card implements Component{
+class Card implements Component {
     private element: HTMLElement = document.createElement('div');
     constructor(
-        private id:string = 'card1'
-    ){}
+        private id: string = 'card1'
+    ) { }
 
     public setProps(props: iCardProps): void {
         let element: HTMLElement = this.element;
@@ -77,22 +79,22 @@ class Card implements Component{
 
         div.appendChild(title);
         div.appendChild(subTitle);
-        
         element.appendChild(div);
+
     }
 
     public render(container: string): void {
         const containerElem = document.getElementById(container);
-        
-        if(containerElem){
+
+        if (containerElem) {
             containerElem.appendChild(this.element);
-        }else{
+        } else {
             console.error('container not found');
         }
     }
 }
 
-    
+
 const button = new Button('id');
 
 button.setProps({
@@ -100,21 +102,21 @@ button.setProps({
     backgroundColor: 'blue'
 });
 
-button.onClick(()=>console.log('clicked'));
+button.onClick(() => console.log('clicked'));
 button.render('app');
 
 
 const card = new Card();
 
 card.setProps({
-    titleColor:'red',
+    titleColor: 'red',
     subTitleColor: 'green',
 
-    titleText:'title_1',
+    titleText: 'title_1',
     subTitleText: 'subtitle_1'
 })
 
 card.render('app');
 
-export {Button, Card}
-        
+export { Button, Card }
+

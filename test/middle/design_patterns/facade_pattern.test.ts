@@ -1,5 +1,6 @@
-import { ApiFacade } from "../../src/projects/middle/facade_pattern";
+// import { ApiFacade } from "../../src/projects/middle/facade_pattern";
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { ApiFacade } from "@patterns/facade_pattern";
 
 describe('ApiFacade', () => {
     global.fetch = vi.fn();

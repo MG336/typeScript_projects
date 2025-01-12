@@ -1,5 +1,6 @@
-import { VehicleFactory, Car, Bike} from "../../src/projects/middle/factory_pattern";
+
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { VehicleFactory, Car, Bike } from "@patterns/factory_pattern";
 
 describe ('VehicleFactory',()=>{
 

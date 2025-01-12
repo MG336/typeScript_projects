@@ -1,4 +1,3 @@
-import { Callback } from './../../../node_modules/tough-cookie/dist/utils.d';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Button,  Card} from "@patterns/component_pattern.ts";
 
@@ -7,8 +6,6 @@ describe('Button', () => {
     let container: HTMLDivElement;
 
     beforeEach(()=> {
-        //Настройка эллемента который будте использоватьсь в качестве контейнера
-
         container = document.createElement('div');
         container.id = 'app';
         document.body.appendChild(container);

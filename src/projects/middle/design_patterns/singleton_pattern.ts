@@ -1,10 +1,10 @@
-interface IDatabaseConnection {
+interface iDatabaseConnection {
     connect(): void;
     disconnect(): void;
 }
 
 
-class DatabaseConnection implements IDatabaseConnection{
+class DatabaseConnection implements iDatabaseConnection{
     private static instance: DatabaseConnection;
     private dbConnect: boolean = false;
 

@@ -1,5 +1,5 @@
-import {DatabaseConnection} from '../../src/projects/middle/singleton_pattern'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { DatabaseConnection } from "@patterns/singleton_pattern";
 
 describe("DatabaseConnection",()=>{
     let db1;
