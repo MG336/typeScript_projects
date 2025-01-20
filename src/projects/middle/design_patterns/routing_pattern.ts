@@ -15,9 +15,9 @@ class Router {
     }
     
     addRoute(path: string, callback: ()=> void){
-        
         this.routes.push({path, callback});
     }
+        
 
     navigate(path: string){
         this.currentRoute = path;
